@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <title>Weather App</title>
+  
+  
+
 <head>
-   <link rel="stylesheet" href="design.css">
+  <title>Weather App</title>
+   
+   
    <!--<script public=''></script>-->
+   <link rel="stylesheet" href="design.css">
+   
  </head>   
     <body><center>
         <h1><marquee>App created</marquee></h1>
@@ -13,6 +19,7 @@
         
             <input placeholder='Location' id='input11'></input>
             <button id='submit' onclick='listen()'>Search</button>
+            <i class="fa fa-search" aria-hidden="true"></i>
             <br></br>
             <p id='m1'></p>
             <p id='m2'></p>
@@ -45,7 +52,7 @@ var para4 = document.querySelector('#m4');
         para3.textContent=''
         para4.textContent=''
 
-fetch('http://localhost:3000/weather?search=' +address1).then((response)=>{
+fetch('/weather?search=' +address1).then((response)=>{
     response.json().then((data)=>{
         if(data.Error){
            para1.textContent=data.Error

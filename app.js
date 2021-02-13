@@ -1,10 +1,11 @@
 const express = require('express')
 const path=require('path')
 const hbs=require('hbs')
-const whe=require('../request_http/whe.js')
-const cordi=require('../request_http/cordi.js')
+const whe=require('./whe.js')
+const cordi=require('./cordi.js')
 const { query } = require('express')
 const app= express()
+const port=process.env.PORT || 3000
 const jointemplates= path.join(__dirname,'./public')
 const joinview= path.join(__dirname,'./templates/views')
 const joinpartials= path.join(__dirname,'./templates/partials')
@@ -83,6 +84,6 @@ app.get('*',(req,res)=>{
     res.send('<h3>404 Error!! Page not found</h3>')
 })
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log("server is up!!")
 })
