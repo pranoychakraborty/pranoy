@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <title>Weather App</title>
+<head>
+   <link rel="stylesheet" href="design.css">
+   <!--<script public=''></script>-->
+ </head>   
+    <body><center>
+        <h1><marquee>App created</marquee></h1>
+        {{>header}}
+        <h1>{{title}}</h1>
+        
+        
+            <input placeholder='Location' id='input11'></input>
+            <button id='submit' onclick='listen()'>Search</button>
+            <br></br>
+            <p id='m1'></p>
+            <p id='m2'></p>
+            <p id='m3'></p>
+            <p id='m4'></p>
+        {{>footer}}
+      <!--  <script public='../../public/app.js'></script>-->
+          </center>
+    </body>
+<script>
+console.log('client side script')
+
+
+
+//form.addEventListener('submit', (e)=> {
+    //e.preventDefault()
+function listen(){
+  const address= document.querySelector('#input11')
+const form=document.querySelector('#ff')
+console.log(address.value)
+
+var para1 = document.querySelector('#m1');
+var para2 = document.querySelector('#m2');
+var para3 = document.querySelector('#m3');
+var para4 = document.querySelector('#m4');
+
+    const address1=address.value
+        para1.textContent= 'Loding....'
+        para2.textContent=''
+        para3.textContent=''
+        para4.textContent=''
+
+fetch('http://localhost:3000/weather?search=' +address1).then((response)=>{
+    response.json().then((data)=>{
+        if(data.Error){
+           para1.textContent=data.Error
+        }else{
+        para1.textContent='Location name: '+data.location_name
+        para2.textContent='Latitude: '+data.latitude
+        para3.textContent='Longitude: '+data.longitude
+        para4.textContent='Weather Report: '+data.Weather_Report
+        console.log(data)
+        }
+
+    })})
+    
+
+//paragraph2.textContent()
+}
+
+
+  </script>
+</html> 
